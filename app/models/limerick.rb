@@ -26,4 +26,7 @@ class Limerick < ApplicationRecord
     inverse_of: :limericks
   )
 
+  validates :title, presence: true
+  validates :limerick_text, presence: true
+
 end
