@@ -46,4 +46,30 @@ class LimericksControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil flash[:success]
   end
 
+  test "should get edit" do
+    user = users(:one)
+    sign_in user
+    limerick = user.limericks.first
+    get edit_limerick_url(limerick)
+    assert_response :success
+    assert_select 'h1', 'Edit Limerick'
+  end
+
+  test "should update limerick" do
+    user = users(:one)
+    sign_in user
+    limerick = user.limericks.first
+    assert_no_difference("Limerick.count") do
+      patch limerick_url(limerick), params: {
+        limerick: {
+          title: 'There was an odd fellow named Gus',
+          limerick_text: "There was an odd fellow named Gus,\nWhen traveling he made such a fuss.\nHe was banned from the train,\nNot allowed on a plane,\nAnd now travels only by bus."
+        }
+      }
+    end
+    assert_response :redirect
+    assert_redirected_to root_url
+    assert_not_nil flash['success']
+  end
+
 end
