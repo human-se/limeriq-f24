@@ -18,7 +18,6 @@ A [limerick (poem)](https://en.wikipedia.org/wiki/Limerick_(poetry)) authoring a
 - `bundle install` - Install all the necessary gems.
 - `rails db:migrate:reset` - Reset and initialize the database.
 - `rails db:seed` - Save seed data to the database (see `db/seeds.rb`).
-  - No seed data is included in the base app.
 
 ### Running the App
 
